@@ -6,10 +6,10 @@ WORKDIR /app
 # Copy requirements.txt and install dependencies
 COPY docker/training/requirements.txt .
 RUN pip install -r requirements.txt
-# Copy the training script to the working directory
-COPY docker/training/train.py ./train.py
+# Copy the inference script to the working directory
+COPY docker/inference/server.py ./server.py
 # Store model in a shared volume
 VOLUME ["/app/models"]
-# TODO: Set the command to run the training script
-CMD ["python", "train.py"]
+# TODO: Set the command to start the server
+CMD ["python", "server.py"]
 
